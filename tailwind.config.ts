@@ -11,7 +11,11 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'dark-gray': '#1f1f1f',
       },
+      spacing: {
+        'carousel-button': '2rem'
+      }
     },
   },
   plugins: [],
