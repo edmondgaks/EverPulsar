@@ -40,7 +40,7 @@ const timelineData: TimelineItem[] = [
     date: 'May 15, 2024',
     title: '«Inspirons demain»',
     description: 'Brief description of the second project milestone. Explain the project’s impact, achievements, or key takeaways.',
-    image: '/timeline4.jpg', 
+    image: '/timeline4.JPG', 
   },
   // Add more items as needed
 ];
