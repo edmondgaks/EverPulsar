@@ -47,35 +47,11 @@ const timelineData: TimelineItem[] = [
 
 
 
-interface Slide {
-  image: string;
-  title: string;
-  description: string;
-}
-
-const slides: Slide[] = [
-  {
-    image: '/solar-collection.webp',
-    title: 'Step 1: Solar Power Collection',
-    description: 'Solar panels capture sunlight, generating renewable energy to power the charging stations sustainably.'
-  },
-  {
-    image: '/energy-conversion.webp',
-    title: 'Step 2: Energy Conversion',
-    description: 'Captured solar energy is converted and stored, ready to be used for EV charging anytime, ensuring efficient energy use.'
-  },
-  {
-    image: '/wireless-charging.webp',
-    title: 'Step 3: Wireless Charging',
-    description: 'When an EV is parked over the charging pad, energy is transferred wirelessly, providing seamless, cable-free charging.'
-  }
-];
 
 export default function Home() {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [services, setServices] = useState<string[]>([]);
     const [selectedStep, setSelectedStep] = useState(1);
     const [activeSection, setActiveSection] = useState<string>('home');
     const [currentpic, setCurrentSlidePic] = useState(0);
@@ -105,9 +81,9 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  // const toggleMobileMenu = () => {
+  //   setIsMobileMenuOpen(!isMobileMenuOpen);
+  // };
 
   const handleScroll = (id: string) => {
     const section = document.getElementById(id);
@@ -157,7 +133,6 @@ export default function Home() {
       //     fullName,
       //     email,
       //     message,
-      //     services,
       // };
   
       // const response = await fetch('/api/contact', {
@@ -199,7 +174,7 @@ export default function Home() {
       {/* Navbar */}
       <header className="flex items-center justify-between px-6 py-4 shadow-md">
         <Image src={"/ev-logo.png"} width={100} height={100} alt="logo" className="h-10 w-auto" />
-        <nav className="hidden md:flex space-x-8">
+        <nav className={`hidden ${isScrolled ? "" : ""} md:flex space-x-8`}>
           <a href="#" key="discover" onClick={() => handleScroll('discover')} className="hover:text-yellow-400">DISCOVER</a>
           <a href="#" key="services" onClick={() => handleScroll('services')} className="hover:text-yellow-400">SERVICES</a>
           <a href="#" key="story" onClick={() => handleScroll('story')} className={`hover:text-yellow-400 ${activeSection ? "" : ""}`}>STORY</a>
@@ -215,7 +190,7 @@ export default function Home() {
           </button>
         </div>
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className={`md:hidden`}>
           <button className="text-black focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
@@ -482,7 +457,7 @@ export default function Home() {
               <Image src="/user1.png" alt="User 1" width={50} height={50} className="rounded-full" />
             </div>
             <p className="font-semibold">Johnathan S. - Los Angeles, CA</p>
-            <p className="text-gray-600 mt-2">&quot;Switching to ev-Pulsar was the best decision I've made for both the environment and my daily commute. I feel great knowing that I&apos;m contributing to a cleaner planet, and the charging network makes it easy to stay powered up wherever I go.&quot;</p>
+            <p className="text-gray-600 mt-2">&quot;Switching to ev-Pulsar was the best decision I&apos;ve made for both the environment and my daily commute. I feel great knowing that I&apos;m contributing to a cleaner planet, and the charging network makes it easy to stay powered up wherever I go.&quot;</p>
           </div>
           <div className="border p-6 rounded-lg shadow-lg max-w-sm">
             <div className="flex items-center justify-center mb-4">
