@@ -3,7 +3,7 @@ import Image from "next/image";
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 import React, { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { ChevronLeft, ChevronRight, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 
 interface TimelineItem {
   date: string;
@@ -76,7 +76,6 @@ export default function Home() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [services, setServices] = useState<string[]>([]);
-    const [currentSlide, setCurrentSlide] = useState(0);
     const [selectedStep, setSelectedStep] = useState(1);
     const [activeSection, setActiveSection] = useState<string>('home');
     const [currentpic, setCurrentSlidePic] = useState(0);
@@ -146,29 +145,20 @@ export default function Home() {
     },
   ];
 
-  const moveSlide = (direction: number) => {
-    setCurrentSlide((prev) => (prev + direction + slides.length) % slides.length);
-  };
+  
   
     
 
-    const handleServiceChange = (service: string) => {
-        setServices(prevServices =>
-            prevServices.includes(service)
-                ? prevServices.filter(s => s !== service)
-                : [...prevServices, service]
-        );
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
   
-      const formData = {
-          fullName,
-          email,
-          message,
-          // services,
-      };
+      // const formData = {
+      //     fullName,
+      //     email,
+      //     message,
+      //     services,
+      // };
   
       // const response = await fetch('/api/contact', {
       //     method: 'POST',
@@ -212,7 +202,7 @@ export default function Home() {
         <nav className="hidden md:flex space-x-8">
           <a href="#" key="discover" onClick={() => handleScroll('discover')} className="hover:text-yellow-400">DISCOVER</a>
           <a href="#" key="services" onClick={() => handleScroll('services')} className="hover:text-yellow-400">SERVICES</a>
-          <a href="#" key="story" onClick={() => handleScroll('story')} className="hover:text-yellow-400">STORY</a>
+          <a href="#" key="story" onClick={() => handleScroll('story')} className={`hover:text-yellow-400 ${activeSection ? "" : ""}`}>STORY</a>
         </nav>
         <div className="hidden md:flex items-center space-x-4">
           <button className="hover:text-yellow-400">
@@ -492,14 +482,14 @@ export default function Home() {
               <Image src="/user1.png" alt="User 1" width={50} height={50} className="rounded-full" />
             </div>
             <p className="font-semibold">Johnathan S. - Los Angeles, CA</p>
-            <p className="text-gray-600 mt-2">"Switching to ev-Pulsar was the best decision I've made for both the environment and my daily commute. I feel great knowing that I’m contributing to a cleaner planet, and the charging network makes it easy to stay powered up wherever I go."</p>
+            <p className="text-gray-600 mt-2">&quot;Switching to ev-Pulsar was the best decision I've made for both the environment and my daily commute. I feel great knowing that I&apos;m contributing to a cleaner planet, and the charging network makes it easy to stay powered up wherever I go.&quot;</p>
           </div>
           <div className="border p-6 rounded-lg shadow-lg max-w-sm">
             <div className="flex items-center justify-center mb-4">
               <Image src="/user2.png" alt="User 2" width={50} height={50} className="rounded-full" />
             </div>
             <p className="font-semibold">Sarah L. - Miami, FL</p>
-            <p className="text-gray-600 mt-2">"With rising fuel prices, ev-Pulsar has been a blessing. I’m saving so much on gas, and the maintenance costs are minimal. Plus, the government rebates were a huge help in making my purchase more affordable!"</p>
+            <p className="text-gray-600 mt-2">&quot;With rising fuel prices, ev-Pulsar has been a blessing. I&apos;m saving so much on gas, and the maintenance costs are minimal. Plus, the government rebates were a huge help in making my purchase more affordable!&quot;</p>
           </div>
         </div>
       </section>
