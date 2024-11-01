@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 
@@ -170,38 +170,38 @@ export default function Home() {
           // services,
       };
   
-      const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-      });
+      // const response = await fetch('/api/contact', {
+      //     method: 'POST',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify(formData),
+      // });
   
-      if (response.ok) {
-          toast.success('Message sent successfully!', {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-          });
-          // Optionally reset the form data here
-          setFullName('');
-          setEmail('');
-          setMessage('');
-          // setServices([]);
-      } else {
-          toast.error('Failed to send message.', {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-          });
-      }
+      // if (response.ok) {
+      //     toast.success('Message sent successfully!', {
+      //         position: "top-right",
+      //         autoClose: 3000,
+      //         hideProgressBar: false,
+      //         closeOnClick: true,
+      //         pauseOnHover: true,
+      //         draggable: true,
+      //         progress: undefined,
+      //     });
+      //     // Optionally reset the form data here
+      //     setFullName('');
+      //     setEmail('');
+      //     setMessage('');
+      //     // setServices([]);
+      // } else {
+      //     toast.error('Failed to send message.', {
+      //         position: "top-right",
+      //         autoClose: 3000,
+      //         hideProgressBar: false,
+      //         closeOnClick: true,
+      //         pauseOnHover: true,
+      //         draggable: true,
+      //         progress: undefined,
+      //     });
+      // }
   };
 
   return (
@@ -584,7 +584,7 @@ export default function Home() {
             Send Message
           </button>      
         </form>
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </div>
       <footer className="bg-white  text-gray-800 py-8">
             <div className="container mx-auto px-4">
